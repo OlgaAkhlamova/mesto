@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="html, css, js">
     <link rel="stylesheet" href="./pages/index.css">
-    <link rel="stylesheet" href="./InterWeb/inter.css">
+    <link rel="stylesheet" href="./InterWeb/inter.css"> 
     <title>Место</title>
 </head>
-<body>
+<body class="body">
     <div class="page">
         <header class="header">
             <img src="images/header-logo.png" alt="логотип проекта место россии" class="header__logo">
-        <!--    <div class="header__line"></div> -->
         </header>
         <main class="container" aria-label="личная страница пользователя">
             <section class="profile">
@@ -22,12 +21,12 @@
                     <div class="profile__info">
                         <div class="profile__info-item">
                             <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-                            <button type="button" class="btn__profile-info-edit popup-open" aria-label="редактировать профиль" title="редактировать профиль"></button>
+                            <button type="button" class="profile__info-edit popup-open" aria-label="редактировать профиль" title="редактировать профиль"></button>
                         </div>
                         <p class="profile__info-job">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="btn__profile-card-add" type="button" aria-label="добавить место" title="добавить место"></button>
+                <button class="profile__card-add" type="button" aria-label="добавить место" title="добавить место"></button>
             </section>
             <section class="elements" aria-label="памятные места пользователя">
                 <ul class="cards">
@@ -35,42 +34,42 @@
                         <img src="./images/karachaev.jpg" alt="древняя церковь в карачаевске" class="cards__image">
                         <div class="cards__pitch">
                             <p class="cards__title">Карачаево-Черкесия</p>
-                            <button type="button" class="btn__like"></button>
+                            <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/dombay.jpg" alt="красивый вид на горы" class="cards__image">
                         <div class="cards__pitch">
                             <p class="cards__title">Домбай</p>
-                            <button type="button" class="btn__like"></button>
+                            <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/elbrus.jpg" alt="контур горы эльбрус на фоне закатного неба " class="cards__image">
                         <div class="cards__pitch">
                             <p class="cards__title">Гора Эльбрус</p>
-                            <button type="button" class="btn__like"></button>
+                            <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/baikal.jpg" alt="сопки окружают Байкал плотным кольцом" class="cards__image">
                         <div class="cards__pitch">
                             <p class="cards__title">Байкал</p>
-                            <button type="button" class="btn__like"></button>
+                            <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/kosa.jpg" alt="мелководье балтийского моря с камнями и карягами" class="cards__image">
                         <div class="cards__pitch">
                             <p class="cards__title">Куршская коса</p>
-                            <button type="button" class="btn__like"></button>
+                            <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/altai.jpg" alt="" class="cards__image">
                         <div class="cards__pitch">
                             <p class="cards__title">Алтай</p>
-                            <button type="button" class="btn__like"></button>
+                            <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                 </ul>
@@ -81,9 +80,9 @@
                     <form class="popup__form">
                        <input type="text" placeholder="Имя" value="Жак-Ив Кусто" class="popup__subtitle input-name">
                        <input type="text" placeholder="О себе" value="Исследователь океана" class="popup__subtitle input-job">
-                       <button type="submit" class="btn__popup-save" ></button>
+                       <button type="submit" class="popup__save" ></button>
                     </form>
-                    <button type="button" class="btn__popup-close popup-close" aria-label="закрыть форму редактирования" title="закрыть форму редактирования"></button>   
+                    <button type="button" class="popup__close popup-close" aria-label="закрыть форму редактирования" title="закрыть форму редактирования"></button>   
                 </div>
             </section>
         </main>

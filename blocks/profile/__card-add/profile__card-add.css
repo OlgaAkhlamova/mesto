@@ -1,4 +1,4 @@
-.btn__profile-card-add {
+.profile__card-add {
     width: 150px;
     height: 50px;
     border: none;
@@ -10,12 +10,12 @@
     cursor: pointer;
 }
 
-.btn__profile-card-add:hover {
+.profile__card-add:hover {
     opacity: 0.6;
 }
 
 @media screen and (max-width: 940px) {
-    .btn__profile-card-add {
+    .profile__card-add {
         width: 282px;
         background-image: url(../../../images/add-button-big.png);
     }
