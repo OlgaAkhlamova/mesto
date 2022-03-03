@@ -1,0 +1,24 @@
+.btn__popup-save {
+    width: 358px;
+    height: 50px;
+    padding: 0;
+    margin: 46px 0 0 0;
+    background: #000000;
+    border-radius: 2px;
+    border: none;
+    background-image: url(../../../images/submit-button-big.png);
+    cursor: pointer;
+}
+
+.btn__popup-save:hover {
+    opacity: 0.8;
+}
+
+@media screen and (max-width: 620px) {
+    .btn__popup-save {
+        width: 238px;
+        height: 46px;
+        background-image: url(../../../images/submit-button-small.png);
+        margin-top: 44px;
+    }
+}
