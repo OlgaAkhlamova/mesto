@@ -6,7 +6,7 @@
     border-radius: 2px;
     padding: 0;
     background: #000000;
-    background-image: url(../../../images/add-button-small.png);
+    background-image: url(../../../images/add-button-small.svg);
     cursor: pointer;
 }
 
@@ -17,6 +17,6 @@
 @media screen and (max-width: 940px) {
     .profile__card-add {
         width: 282px;
-        background-image: url(../../../images/add-button-big.png);
+        background-image: url(../../../images/add-button-big.svg);
     }
 }

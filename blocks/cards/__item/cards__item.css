@@ -1,6 +1,6 @@
 .cards__item {
     width: 282px;
-    height: 361px;
+    min-height: 361px;
     background: #FFFFFF;
     border-radius: 10px;
 }

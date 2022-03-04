@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="html, css, js">
     <link rel="stylesheet" href="./pages/index.css">
-    <link rel="stylesheet" href="./InterWeb/inter.css"> 
     <title>Место</title>
 </head>
 <body class="body">
@@ -21,7 +20,7 @@
                     <div class="profile__info">
                         <div class="profile__info-item">
                             <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-                            <button type="button" class="profile__info-edit popup-open" aria-label="редактировать профиль" title="редактировать профиль"></button>
+                            <button type="button" class="profile__info-edit" aria-label="редактировать профиль" title="редактировать профиль"></button>
                         </div>
                         <p class="profile__info-job">Исследователь океана</p>
                     </div>
@@ -33,59 +32,59 @@
                     <li class="cards__item">
                         <img src="./images/karachaev.jpg" alt="древняя церковь в карачаевске" class="cards__image">
                         <div class="cards__pitch">
-                            <p class="cards__title">Карачаево-Черкесия</p>
+                            <h2 class="cards__title">Карачаево-Черкесия</h2>
                             <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/dombay.jpg" alt="красивый вид на горы" class="cards__image">
                         <div class="cards__pitch">
-                            <p class="cards__title">Домбай</p>
+                            <h2 class="cards__title">Домбай</h2>
                             <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/elbrus.jpg" alt="контур горы эльбрус на фоне закатного неба " class="cards__image">
                         <div class="cards__pitch">
-                            <p class="cards__title">Гора Эльбрус</p>
+                            <h2 class="cards__title">Гора Эльбрус</h2>
                             <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/baikal.jpg" alt="сопки окружают Байкал плотным кольцом" class="cards__image">
                         <div class="cards__pitch">
-                            <p class="cards__title">Байкал</p>
+                            <h2 class="cards__title">Байкал</h2>
                             <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/kosa.jpg" alt="мелководье балтийского моря с камнями и карягами" class="cards__image">
                         <div class="cards__pitch">
-                            <p class="cards__title">Куршская коса</p>
+                            <h2 class="cards__title">Куршская коса</h2>
                             <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                     <li class="cards__item">
                         <img src="./images/altai.jpg" alt="" class="cards__image">
                         <div class="cards__pitch">
-                            <p class="cards__title">Алтай</p>
+                            <h2 class="cards__title">Алтай</h2>
                             <button type="button" class="cards__like"></button>
                         </div>
                     </li>
                 </ul>
             </section>
-            <section class="popup">
-                <div class="popup__container">
-                    <h3 class="popup__title">Редактировать профиль</h3>
-                    <form class="popup__form">
-                       <input type="text" placeholder="Имя" value="Жак-Ив Кусто" class="popup__subtitle input-name">
-                       <input type="text" placeholder="О себе" value="Исследователь океана" class="popup__subtitle input-job">
-                       <button type="submit" class="popup__save" ></button>
-                    </form>
-                    <button type="button" class="popup__close popup-close" aria-label="закрыть форму редактирования" title="закрыть форму редактирования"></button>   
-                </div>
-            </section>
         </main>
+        <section class="popup">
+            <div class="popup__container">
+                <h3 class="popup__title">Редактировать профиль</h3>
+                <form class="popup__form" name="job-and-name-input">
+                   <input type="text" name="name" placeholder="Имя" value="Жак-Ив Кусто" class="popup__subtitle popup__subtitle_name">
+                   <input type="text" name="job" placeholder="О себе" value="Исследователь океана" class="popup__subtitle popup__subtitle_job">
+                   <button type="submit" class="popup__save">Сохранить</button>
+                </form>
+                <button type="button" class="popup__close" aria-label="закрыть форму редактирования" title="закрыть форму редактирования"></button>   
+            </div>
+        </section>
         <footer class="footer">
             <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>

@@ -5,7 +5,7 @@
     box-sizing: border-box;
     padding: 0;
     background: #000000;
-    background-image: url(../../../images/edit-button-big.png);
+    background-image: url(../../../images/edit-button-big.svg);
     cursor: pointer;
 }
 
@@ -17,6 +17,6 @@
     .profile__info-edit {
         width: 18px;
         height: 18px;
-        background-image: url(../../../images/edit-button-small.png);
+        background-image: url(../../../images/edit-button-small.svg);
     }
 }

@@ -6,7 +6,13 @@
     background: #000000;
     border-radius: 2px;
     border: none;
-    background-image: url(../../../images/submit-button-big.png);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
     cursor: pointer;
 }
 
@@ -18,7 +24,8 @@
     .popup__save {
         width: 238px;
         height: 46px;
-        background-image: url(../../../images/submit-button-small.png);
         margin-top: 44px;
+        font-size: 14px;
+        line-height: 17px;
     }
 }
