@@ -39,7 +39,7 @@ const cardTemplate = document.querySelector('.cards-template').content;
 const cardsList = document.querySelector('.cards');
 
 //for enlarged images from popupShowZoom
-const zoomImage = popupShowZoom.querySelector('.cards__image_zoom');
+const zoomImage = popupShowZoom.querySelector('.popup__card');
 const zoomImageName = popupShowZoom.querySelector('.popup__subtitlezoom');
 
 const initialCards = [
