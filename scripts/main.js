@@ -1,17 +1,16 @@
 //popups
 const popupEditProfile = document.querySelector('.popup_profile-edit');
 const popupNewPlace = document.querySelector('.popup_new-place');
-const popupShowZoom = document.querySelector('.popup_show-zoom');
+const popupShowZoom = document.querySelector('.popup_showzoom');
 
 //popup's close buttons
 const popupEditProfileClose = popupEditProfile.querySelector('.popup__close_profile-edit');
 const popupNewPlaceClose = popupNewPlace.querySelector('.popup__close_new-place');
-const popupShowZoomClose = popupShowZoom.querySelector('.popup__close_show-zoom');
+const popupShowZoomClose = popupShowZoom.querySelector('.popup__close_showzoom');
 
 //popup's open buttons
 const popupEditProfileOpen = document.querySelector('.profile__info-edit');
 const popupNewPlaceOpen = document.querySelector('.profile__card-add');
-//const popupShowZoomOpen = document.querySelector('.cards__image');
 
 //other buttons
 const likeButton = document.querySelector('.cards__like');
@@ -40,8 +39,8 @@ const cardTemplate = document.querySelector('.cards-template').content;
 const cardsList = document.querySelector('.cards');
 
 //for enlarged images from popupShowZoom
-const zoomImage = popupShowZoom.querySelector('.cards__image-zoom');
-const zoomImageName = popupShowZoom.querySelector('.popup__subtitle-zoom');
+const zoomImage = popupShowZoom.querySelector('.cards__imagezoom');
+const zoomImageName = popupShowZoom.querySelector('.popup__subtitlezoom');
 
 const initialCards = [
   {

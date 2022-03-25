@@ -1,4 +1,4 @@
-.popup__container-zoom {
+.popup__containerzoom {
     position: relative;
     /*   display: inline-block;
     */
@@ -7,14 +7,14 @@
 }
 
 @media screen and (max-width: 940px) {
-    .popup__container-zoom {
+    .popup__containerzoom {
         max-height: 75vh;
         max-width: 75vw;
     }
 }
 
 @media screen and (max-width: 620px) {
-    .popup__container-zoom {
+    .popup__containerzoom {
         max-height: 75vh;
         max-width: 75vw;
     }
