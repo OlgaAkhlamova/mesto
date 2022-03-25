@@ -1,0 +1,10 @@
+.cards__image-zoom {
+    padding: 0;
+    margin: 0;
+    max-width: 75vw;
+    max-height: 75vh;
+    /* min-width: 240px; */
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}

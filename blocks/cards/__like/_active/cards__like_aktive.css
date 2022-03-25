@@ -1,4 +1,4 @@
-.cards__like {
+.cards__like_active {
     width: 22px;
     height: 22px;
     padding: 0;
@@ -6,11 +6,7 @@
     background: 50% no-repeat;
     background-size: 100%;
     border: none;
-    background-image: url(../../../images/heart-white.svg);
+    background-image: url(../../../../images/heart-black.svg);
     cursor: pointer;
-    opacity: 0.2;
-}
-
-.cards__like:hover {
-    opacity: 0.5;
+    opacity: 1;
 }

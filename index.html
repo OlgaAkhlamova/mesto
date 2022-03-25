@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="html, css, js">
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Место</title>
+    <title>Место: добавление карточки</title>
 </head>
 <body class="body">
     <div class="page">
@@ -29,66 +29,58 @@
             </section>
             <section class="elements" aria-label="памятные места пользователя">
                 <ul class="cards">
-                    <li class="cards__item">
-                        <img src="./images/karachaev.jpg" alt="древняя церковь в карачаевске" class="cards__image">
-                        <div class="cards__pitch">
-                            <h2 class="cards__title">Карачаево-Черкесия</h2>
-                            <button type="button" class="cards__like"></button>
-                        </div>
-                    </li>
-                    <li class="cards__item">
-                        <img src="./images/dombay.jpg" alt="красивый вид на горы" class="cards__image">
-                        <div class="cards__pitch">
-                            <h2 class="cards__title">Домбай</h2>
-                            <button type="button" class="cards__like"></button>
-                        </div>
-                    </li>
-                    <li class="cards__item">
-                        <img src="./images/elbrus.jpg" alt="контур горы эльбрус на фоне закатного неба " class="cards__image">
-                        <div class="cards__pitch">
-                            <h2 class="cards__title">Гора Эльбрус</h2>
-                            <button type="button" class="cards__like"></button>
-                        </div>
-                    </li>
-                    <li class="cards__item">
-                        <img src="./images/baikal.jpg" alt="сопки окружают Байкал плотным кольцом" class="cards__image">
-                        <div class="cards__pitch">
-                            <h2 class="cards__title">Байкал</h2>
-                            <button type="button" class="cards__like"></button>
-                        </div>
-                    </li>
-                    <li class="cards__item">
-                        <img src="./images/kosa.jpg" alt="мелководье балтийского моря с камнями и карягами" class="cards__image">
-                        <div class="cards__pitch">
-                            <h2 class="cards__title">Куршская коса</h2>
-                            <button type="button" class="cards__like"></button>
-                        </div>
-                    </li>
-                    <li class="cards__item">
-                        <img src="./images/altai.jpg" alt="" class="cards__image">
-                        <div class="cards__pitch">
-                            <h2 class="cards__title">Алтай</h2>
-                            <button type="button" class="cards__like"></button>
-                        </div>
-                    </li>
+                         
                 </ul>
             </section>
         </main>
-        <section class="popup">
-            <div class="popup__container">
+        <section class="popup popup_profile-edit" aria-label="редактирование профиля">
+            <div class="popup__container popup__container_profile">
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <form class="popup__form" name="job-and-name-input">
+                <form class="popup__form popup__form_profile" name="job-and-name-input">
                    <input type="text" name="name" placeholder="Имя" value="Жак-Ив Кусто" class="popup__subtitle popup__subtitle_type_name">
                    <input type="text" name="job" placeholder="О себе" value="Исследователь океана" class="popup__subtitle popup__subtitle_type_job">
                    <button type="submit" class="popup__save">Сохранить</button>
                 </form>
-                <button type="button" class="popup__close" aria-label="закрыть форму редактирования" title="закрыть форму редактирования"></button>   
+                <button type="button" class="popup__close popup__close_profile-edit" aria-label="закрыть форму редактирования" title="закрыть форму редактирования"></button>   
             </div>
         </section>
+        <section class="popup popup_new-place" aria-label="добавление фотографии">
+            <div class="popup__container popup__container_place">
+                <h3 class="popup__title">Новое место</h3>
+                <form class="popup__form popup__form_place" name="designation-and-link-input">
+                   <input type="text" name="designation" placeholder="Название" value="" class="popup__subtitle popup__subtitle_type_designation">
+                   <input type="text" name="cardslink" placeholder="Ссылка на картинку" value="" class="popup__subtitle popup__subtitle_type_cardlink">
+                   <button type="submit" class="popup__save popup__save_place">Создать</button>
+                </form>
+                <button type="button" 
+                class="popup__close popup__close_new-place" 
+                aria-label="закрыть форму добавления изображения" 
+                title="закрыть форму добавления изображения">
+                </button>   
+            </div>
+        </section> 
+        <section class="popup popup_show-zoom" aria-label="просмотр фотографии">
+            <div class="popup__container-zoom"> 
+                <img src="#" alt="" class="cards__image-zoom">
+                <p class="popup__subtitle-zoom"></p>
+                <button type="button" class="popup__close popup__close_show-zoom" aria-label="закрыть изображение" title="закрыть изображение"></button>   
+            </div>
+        </section> 
         <footer class="footer">
             <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
         </footer>
     </div>
+    <template class="cards-template">
+        <li class="cards__item">  
+            <img src="#" alt="" class="cards__image">
+            <div class="cards__trash"></div>
+            <div class="cards__pitch">
+                <h2 class="cards__title"></h2>
+                <button type="button" class="cards__like"></button>
+            </div>
+        </li>   
+    </template>
+
     <script src="./scripts/main.js"></script>
 </body>
 </html>
