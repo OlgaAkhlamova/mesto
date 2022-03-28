@@ -173,8 +173,3 @@ savePlaceButton.addEventListener('.click', function () {
 formElementProfile.addEventListener('submit', formSubmitHandlerProfile);
 
 formNewPlace.addEventListener('submit', formSubmitHandlerNewPlace);
-
-
-
-
-

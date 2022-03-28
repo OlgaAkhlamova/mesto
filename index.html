@@ -47,9 +47,9 @@
         <section class="popup popup_new-place" aria-label="добавление фотографии">
             <div class="popup__container popup__container_place">
                 <h3 class="popup__title">Новое место</h3>
-                <form class="popup__form popup__form_place" name="designation-and-link-input">
+                <form class="popup__form popup__form_place" name="add-card-form">
                    <input type="text" name="designation" placeholder="Название" value="" class="popup__subtitle popup__subtitle_type_designation">
-                   <input type="text" name="cardslink" placeholder="Ссылка на картинку" value="" class="popup__subtitle popup__subtitle_type_cardlink">
+                   <input type="text" name="cardslink" placeholder="Ссылка на картинку" value="" class="popup__subtitle popup__subtitle_type_card-link">
                    <button type="submit" class="popup__save popup__save_place">Создать</button>
                 </form>
                 <button type="button" 
@@ -59,11 +59,11 @@
                 </button>   
             </div>
         </section> 
-        <section class="popup popup_showzoom" aria-label="просмотр фотографии">
-            <div class="popup__containerzoom"> 
+        <section class="popup popup_show-zoom" aria-label="просмотр фотографии">
+            <div class="popup__container-zoom"> 
                 <img src="#" alt="" class="popup__card">
-                <p class="popup__subtitlezoom"></p>
-                <button type="button" class="popup__close popup__close_showzoom" aria-label="закрыть изображение" title="закрыть изображение"></button>   
+                <p class="popup__subtitle-zoom"></p>
+                <button type="button" class="popup__close popup__close_show-zoom" aria-label="закрыть изображение" title="закрыть изображение"></button>   
             </div>
         </section> 
         <footer class="footer">
@@ -71,16 +71,17 @@
         </footer>
     </div>
     <template class="cards-template">
-        <li class="cards__item">  
-            <img src="#" alt="" class="cards__image">
-            <div class="cards__trash"></div>
-            <div class="cards__pitch">
-                <h2 class="cards__title"></h2>
-                <button type="button" class="cards__like"></button>
+        <li class="card">  
+            <img src="" alt="" class="card__image">
+            <div class="card__trash"></div>
+            <div class="card__pitch">
+                <h2 class="card__title"></h2>
+                <button type="button" class="card__like"></button>
             </div>
         </li>   
     </template>
-
-    <script src="./scripts/main.js"></script>
+    
+    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/index.js"></script>
 </body>
 </html>

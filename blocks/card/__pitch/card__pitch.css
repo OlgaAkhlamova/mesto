@@ -1,8 +1,8 @@
-.cards__pitch {
+.card__pitch {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 21px;
-    padding-right: 15px;
-    margin-top: 20px;
+    padding-right: 21px;
+    margin-top: 25px;
 }

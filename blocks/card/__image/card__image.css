@@ -1,4 +1,5 @@
-.cards__image {
+.card__image {
+    display: block;
     width: 282px;
     height: 282px;
     margin: 0;
