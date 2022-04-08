@@ -17,13 +17,13 @@ const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__info-name');
 const profileJob = profile.querySelector('.profile__info-job'); 
 const formElementProfile = popupEditProfile.querySelector('.popup__form_profile');
-const inputName = popupEditProfile.querySelector('.popup__subtitle_type_name');
-const inputJob = popupEditProfile.querySelector('.popup__subtitle_type_job');
+const inputName = popupEditProfile.querySelector('.popup__input_type_name');
+const inputJob = popupEditProfile.querySelector('.popup__input_type_job');
 
 //for add place
 const formNewPlace = document.querySelector('.popup__form_place');
-const inputPlace = formNewPlace.querySelector('.popup__subtitle_type_designation');
-const inputLink = formNewPlace.querySelector('.popup__subtitle_type_card-link');
+const inputPlace = formNewPlace.querySelector('.popup__input_type_designation');
+const inputLink = formNewPlace.querySelector('.popup__input_type_card-link');
 
 //for template
 const cardTemplate = document.querySelector('.cards-template').content;
@@ -32,6 +32,9 @@ const cardsList = document.querySelector('.cards');
 //for enlarged images from popupShowZoom
 const zoomImage = popupShowZoom.querySelector('.popup__card');
 const zoomImageName = popupShowZoom.querySelector('.popup__subtitle-zoom');
+
+//for validation form
+const buttonSavePlace = document.querySelector('.popup__save_place');
 
 //*// open and close popups
 const openPopup = (popup) => {
@@ -84,7 +87,9 @@ initialCards.forEach((cardElement) => {
 function handleSubmitNewPlaceForm(evt) {
   evt.preventDefault();
   cardsList.prepend(renderCard(inputPlace.value, inputLink.value));
-  closePopup(popupNewPlace);
+  closePopup(popupNewPlace); 
+  buttonSavePlace.classList.add('popup__save_inactive');
+  buttonSavePlace.disabled = 'true';
   evt.currentTarget.reset();
 };
 
@@ -97,6 +102,9 @@ function openPopupZoom(evt) {
   openPopup(popupShowZoom);
 }
 
+function inactiveButton() {
+  buttonSavePlace.classList.add('popup__save_inactive');
+}
 //*//listeners
 popupEditProfileOpen.addEventListener('click', function () {
   inputName.value = profileName.textContent;
@@ -104,7 +112,7 @@ popupEditProfileOpen.addEventListener('click', function () {
   openPopup(popupEditProfile);  
 });
 
-popupNewPlaceOpen.addEventListener('click', function () {
+popupNewPlaceOpen.addEventListener('click', function () { 
   openPopup(popupNewPlace);
 });
 
