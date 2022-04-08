@@ -52,12 +52,8 @@ const disabledButton = function(buttonElement, obj) {
 
 const toggleButtonState = (inputList, buttonElement, obj) => {
   if (hasInvalidInput(inputList, obj)) {  
-   // buttonElement.classList.add(obj.inactiveButtonClass);
-   // buttonElement.setAttribute('disabled', true);
-   disabledButton(buttonElement, obj);   
+    disabledButton(buttonElement, obj);   
   } else {
- //   buttonElement.removeAttribute('disabled');
- //   buttonElement.classList.remove(obj.inactiveButtonClass);
     activeButton(buttonElement, obj);    
   } 
 };
@@ -85,15 +81,5 @@ const enableValidation = (obj) => {
 
     });
 };
-  
-//const validationPopupObject = {
-//  formSelector: '.popup__form',
-//  inputSelector: '.popup__input',
-//  submitButtonSelector: '.popup__save',
-//  inactiveButtonClass: 'popup__save_inactive',
-//  inputErrorClass: 'popup__input_type-error',
-//  errorClass: 'popup__input-error_active',
-//};
-
   
 enableValidation(obj); 
