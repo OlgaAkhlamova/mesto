@@ -11,3 +11,7 @@
     cursor: pointer;
     position: absolute;
 }
+
+.card__trash:hover {
+    opacity: .6;
+}

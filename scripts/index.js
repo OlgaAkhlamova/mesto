@@ -37,12 +37,22 @@ const zoomImageName = popupShowZoom.querySelector('.popup__subtitle-zoom');
 const buttonSavePlace = document.querySelector('.popup__save_place');
 
 //*// open and close popups
+
+// closing by Esc
+const closePopupEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const nowOpenPopup = document.querySelector('.popup_opened');
+    closePopup(nowOpenPopup);
+  }
+};
 const openPopup = (popup) => {
-    popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEsc);
+  popup.classList.add('popup_opened');
 };
 
 const closePopup = (popup) => {
-    popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupEsc);
 };
 
 //*// editing a profile
@@ -68,7 +78,7 @@ function likeCard(evt) {
 
 function deleteCard (evt) {
   evt.currentTarget.closest('.card').remove();
-}
+};
 
 function renderCard(cardName, cardLink) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -100,11 +110,11 @@ function openPopupZoom(evt) {
   zoomImage.src = evt.target.src;
   zoomImage.alt = evt.target.alt;
   openPopup(popupShowZoom);
-}
+};
 
-function inactiveButton() {
+function switchOffButton() {
   buttonSavePlace.classList.add('popup__save_inactive');
-}
+};
 //*//listeners
 popupEditProfileOpen.addEventListener('click', function () {
   inputName.value = profileName.textContent;
@@ -126,6 +136,27 @@ popupNewPlaceClose.addEventListener('click', function () {
 
 popupShowZoomClose.addEventListener('click', function () {
   closePopup(popupShowZoom);
+});
+
+// closing by overlay
+
+
+popupEditProfile.addEventListener('click', function (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupEditProfile);
+  }
+});
+
+popupNewPlace.addEventListener('click', function (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupNewPlace);
+  }
+});
+
+popupShowZoom.addEventListener('click', function (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(popupShowZoom);
+  }
 });
 
 formElementProfile.addEventListener('submit', handleSubmitEditProfileForm);
