@@ -66,18 +66,18 @@ function handleSubmitEditProfileForm(evt) {
 
 //*// creating a card
 
-function setActionsListeners(card) {
-  card.querySelector('.card__image').addEventListener('click', openPopupZoom);
-  card.querySelector('.card__like').addEventListener('click', likeCard);
-  card.querySelector('.card__trash').addEventListener('click', deleteCard);
-};
-
 function likeCard(evt) {
   evt.target.classList.toggle('card__like_active');
 };
 
 function deleteCard (evt) {
   evt.currentTarget.closest('.card').remove();
+};
+
+function setActionsListeners(card) {
+  card.querySelector('.card__image').addEventListener('click', openPopupZoom);
+  card.querySelector('.card__like').addEventListener('click', likeCard);
+  card.querySelector('.card__trash').addEventListener('click', deleteCard);
 };
 
 function renderCard(cardName, cardLink) {
@@ -112,9 +112,6 @@ function openPopupZoom(evt) {
   openPopup(popupShowZoom);
 };
 
-function switchOffButton() {
-  buttonSavePlace.classList.add('popup__save_inactive');
-};
 //*//listeners
 popupEditProfileOpen.addEventListener('click', function () {
   inputName.value = profileName.textContent;
@@ -139,7 +136,6 @@ popupShowZoomClose.addEventListener('click', function () {
 });
 
 // closing by overlay
-
 
 popupEditProfile.addEventListener('click', function (evt) {
   if (evt.target === evt.currentTarget) {

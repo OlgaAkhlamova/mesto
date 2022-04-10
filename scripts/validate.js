@@ -40,21 +40,21 @@ const hasInvalidInput = (inputList) => {
   }); 
 };
 
-const activeButton = function(buttonElement, obj) {
+const setActiveButton = (buttonElement, obj) => {
   buttonElement.removeAttribute('disabled');
   buttonElement.classList.remove(obj.inactiveButtonClass);
 };
 
-const disabledButton = function(buttonElement, obj) {
+const setDisabledButton = (buttonElement, obj) => {
   buttonElement.classList.add(obj.inactiveButtonClass);
   buttonElement.setAttribute('disabled', true); 
 };
 
 const toggleButtonState = (inputList, buttonElement, obj) => {
   if (hasInvalidInput(inputList, obj)) {  
-    disabledButton(buttonElement, obj);   
+    setDisabledButton(buttonElement, obj);   
   } else {
-    activeButton(buttonElement, obj);    
+    setActiveButton(buttonElement, obj);    
   } 
 };
 
