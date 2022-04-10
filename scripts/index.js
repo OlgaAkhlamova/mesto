@@ -1,4 +1,5 @@
 //popups
+const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_profile-edit');
 const popupNewPlace = document.querySelector('.popup_new-place');
 const popupShowZoom = document.querySelector('.popup_show-zoom');
@@ -38,13 +39,6 @@ const buttonSavePlace = document.querySelector('.popup__save_place');
 
 //*// open and close popups
 
-// closing by Esc
-const closePopupEsc = (evt) => {
-  if (evt.key === 'Escape') {
-    const nowOpenPopup = document.querySelector('.popup_opened');
-    closePopup(nowOpenPopup);
-  }
-};
 const openPopup = (popup) => {
   document.addEventListener('keydown', closePopupEsc);
   popup.classList.add('popup_opened');
@@ -53,6 +47,14 @@ const openPopup = (popup) => {
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupEsc);
+};
+
+// closing by Esc
+const closePopupEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    const nowOpenPopup = document.querySelector('.popup_opened');
+    closePopup(nowOpenPopup);
+  }
 };
 
 //*// editing a profile
@@ -112,6 +114,8 @@ function openPopupZoom(evt) {
   openPopup(popupShowZoom);
 };
 
+//*// clearing form fields with unsaved data
+
 function clearError() {
   const errorMessage = document.querySelectorAll(".popup__input-error_active");
   errorMessage.forEach((item) => {
@@ -124,7 +128,8 @@ function clearError() {
   });
 };
 
-//*//listeners
+//*// listeners for opening and closing
+
 popupEditProfileOpen.addEventListener('click', function () {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
@@ -139,37 +144,25 @@ popupNewPlaceOpen.addEventListener('click', function () {
   openPopup(popupNewPlace);
 });
 
-popupEditProfileClose.addEventListener('click', function () {
-  closePopup(popupEditProfile);
-});
-
-popupNewPlaceClose.addEventListener('click', function () {
-  closePopup(popupNewPlace);
-});
-
-popupShowZoomClose.addEventListener('click', function () {
-  closePopup(popupShowZoom);
-});
-
-// closing by overlay
-
-popupEditProfile.addEventListener('click', function (evt) {
-  if (evt.target === evt.currentTarget) {
+popupEditProfile.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closePopup(popupEditProfile);
   }
 });
 
-popupNewPlace.addEventListener('click', function (evt) {
-  if (evt.target === evt.currentTarget) {
+popupNewPlace.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closePopup(popupNewPlace);
   }
 });
 
-popupShowZoom.addEventListener('click', function (evt) {
-  if (evt.target === evt.currentTarget) {
+popupShowZoom.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closePopup(popupShowZoom);
   }
 });
+
+//*// for transmit forms
 
 formElementProfile.addEventListener('submit', handleSubmitEditProfileForm);
 
