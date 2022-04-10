@@ -112,14 +112,30 @@ function openPopupZoom(evt) {
   openPopup(popupShowZoom);
 };
 
+function clearError() {
+  const errorMessage = document.querySelectorAll(".popup__input-error_active");
+  errorMessage.forEach((item) => {
+    item.textContent = "";
+    item.classList.remove("popup__input-error_active");
+  });
+  const errorBorder = document.querySelectorAll(".popup__input_type-error");
+  errorBorder.forEach((item) => {
+    item.classList.remove("popup__input_type-error");
+  });
+};
+
 //*//listeners
 popupEditProfileOpen.addEventListener('click', function () {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
+  clearError();
   openPopup(popupEditProfile);  
 });
 
-popupNewPlaceOpen.addEventListener('click', function () { 
+popupNewPlaceOpen.addEventListener('click', function () {
+  inputPlace.value = "";
+  inputLink.value = ""; 
+  clearError();
   openPopup(popupNewPlace);
 });
 
