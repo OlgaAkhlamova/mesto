@@ -1,5 +1,5 @@
-import {Card} from './сard.js';
-import { FormValidator } from './formvalidator.js';
+import {Card} from './Card.js';
+import { FormValidator } from './Formvalidator.js';
 
 const obj = {
   formSelector: '.popup__form',
@@ -11,15 +11,9 @@ const obj = {
 };
 
 //popups
-const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_profile-edit');
 const popupNewPlace = document.querySelector('.popup_new-place');
 const popupShowZoom = document.querySelector('.popup_show-zoom');
-
-//popup's close buttons
-const popupEditProfileClose = popupEditProfile.querySelector('.popup__close_profile-edit');
-const popupNewPlaceClose = popupNewPlace.querySelector('.popup__close_new-place');
-//const popupShowZoomClose = popupShowZoom.querySelector('.popup__close_show-zoom');
 
 //popup's open buttons
 const popupEditProfileOpen = document.querySelector('.profile__info-edit');
@@ -39,11 +33,7 @@ const inputPlace = formNewPlace.querySelector('.popup__input_type_designation');
 const inputLink = formNewPlace.querySelector('.popup__input_type_card-link');
 
 //for template
-const cardsList = document.querySelector('.cards');
-
-//for enlarged images from popupShowZoom
-//const zoomImage = popupShowZoom.querySelector('.popup__card');
-//const zoomImageName = popupShowZoom.querySelector('.popup__subtitle-zoom');
+const cardsContainer = document.querySelector('.cards');
 
 //for validation form
 const buttonSavePlace = document.querySelector('.popup__save_place');
@@ -84,38 +74,22 @@ function handleSubmitEditProfileForm(evt) {
 
 //*// creating a card
 
-function renderCard(cardName, cardLink,) {
-  const card = new Card(cardName, cardLink);
+function renderCard(cardName, cardLink) {
+  const card = new Card(cardName, cardLink, '.cards-template');
   const cardElement = card.generateCard();
   return cardElement;
 }
 
 initialCards.forEach((card) => {
-  cardsList.append(renderCard(card.name, card.link));
+  cardsContainer.append(renderCard(card.name, card.link));
 });
 
 function handleSubmitNewPlaceForm(evt) {
   evt.preventDefault();
   
-  cardsList.prepend(renderCard(inputName.value, inputLink.value));
+  cardsContainer.prepend(renderCard(inputPlace.value, inputLink.value));
   closePopup(popupNewPlace); 
-  buttonSavePlace.classList.add('popup__save_inactive');
-  buttonSavePlace.disabled = 'true';
-  evt.currentTarget.reset();
-};
-
-//*// clearing form fields with unsaved data
-
-function clearError() {
-  const errorMessage = document.querySelectorAll(".popup__input-error_active");
-  errorMessage.forEach((item) => {
-    item.textContent = "";
-    item.classList.remove("popup__input-error_active");
-  });
-  const errorBorder = document.querySelectorAll(".popup__input_type-error");
-  errorBorder.forEach((item) => {
-    item.classList.remove("popup__input_type-error");
-  });
+  formNewPlace.reset();
 };
 
 //*// listeners for opening and closing
@@ -123,30 +97,31 @@ function clearError() {
 popupEditProfileOpen.addEventListener('click', function () {
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
-  clearError();
+  profileValid.clearError();
   openPopup(popupEditProfile);  
 });
 
 popupNewPlaceOpen.addEventListener('click', function () {
   inputPlace.value = "";
   inputLink.value = ""; 
-  clearError();
+  newPlaceValid.clearError();
+  newPlaceValid.setDisabledButton()
   openPopup(popupNewPlace);
 });
 
-popupEditProfile.addEventListener('click', (evt) => {
+popupEditProfile.addEventListener('mousedown', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closePopup(popupEditProfile);
   }
 });
 
-popupNewPlace.addEventListener('click', (evt) => {
+popupNewPlace.addEventListener('mousedown', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closePopup(popupNewPlace);
   }
 });
 
-popupShowZoom.addEventListener('click', (evt) => {
+popupShowZoom.addEventListener('mousedown', (evt) => {
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
     closePopup(popupShowZoom);
   }
@@ -158,4 +133,4 @@ formElementProfile.addEventListener('submit', handleSubmitEditProfileForm);
 
 formNewPlace.addEventListener('submit', handleSubmitNewPlaceForm);
 
-export {openPopup, closePopup, popupShowZoom};
+export {openPopup, popupShowZoom};

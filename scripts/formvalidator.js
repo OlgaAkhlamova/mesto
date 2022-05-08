@@ -38,31 +38,38 @@ class FormValidator {
         }); 
     };
   
-    _setActiveButton() {
+    setActiveButton() {
         this._buttonElement.removeAttribute('disabled');
         this._buttonElement.classList.remove(this._listSelector.inactiveButtonClass);
     };
   
-    _setDisabledButton() {
+    setDisabledButton() {
         this._buttonElement.classList.add(this._listSelector.inactiveButtonClass);
         this._buttonElement.setAttribute('disabled', true); 
     };
   
-    _toggleButtonState = (inputList) => {
+    toggleButtonState = (inputList) => {
         if (this._hasInvalidInput(inputList)) {  
-            this._setDisabledButton();    
+            this.setDisabledButton();    
         } else {
-           this._setActiveButton(); 
+           this.setActiveButton(); 
         } 
+    };
+
+    //очистка полей формы при несохраненных данных
+    clearError() {
+        this._inputList.forEach((item) => {
+            this._hideInputError(item);
+        });
     };
 
     //слушатель событий всех полей формы
     _setEventListeners = () => {
-        this._toggleButtonState();
+        this.toggleButtonState();
         this._inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
                 this._checkInputValidity(inputElement);
-                this._toggleButtonState();
+                this.toggleButtonState();
             });
         });
     };
