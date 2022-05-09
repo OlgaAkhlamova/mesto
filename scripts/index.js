@@ -11,6 +11,7 @@ const obj = {
 };
 
 //popups
+const popupList = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_profile-edit');
 const popupNewPlace = document.querySelector('.popup_new-place');
 const popupShowZoom = document.querySelector('.popup_show-zoom');
@@ -89,7 +90,6 @@ function handleSubmitNewPlaceForm(evt) {
   
   cardsContainer.prepend(renderCard(inputPlace.value, inputLink.value));
   closePopup(popupNewPlace); 
-  formNewPlace.reset();
 };
 
 //*// listeners for opening and closing
@@ -102,30 +102,18 @@ popupEditProfileOpen.addEventListener('click', function () {
 });
 
 popupNewPlaceOpen.addEventListener('click', function () {
-  inputPlace.value = "";
-  inputLink.value = ""; 
+  formNewPlace.reset(); 
   newPlaceValid.clearError();
-  newPlaceValid.setDisabledButton()
   openPopup(popupNewPlace);
 });
 
-popupEditProfile.addEventListener('mousedown', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(popupEditProfile);
-  }
-});
-
-popupNewPlace.addEventListener('mousedown', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(popupNewPlace);
-  }
-});
-
-popupShowZoom.addEventListener('mousedown', (evt) => {
-  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) {
-    closePopup(popupShowZoom);
-  }
-});
+popupList.forEach(popup => {
+  popup.addEventListener('mousedown', (evt) => { 
+    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close')) { 
+      closePopup(popup); 
+    } 
+  }); 
+}); 
 
 //*// for transmit forms
 
