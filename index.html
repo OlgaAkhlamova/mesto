@@ -29,7 +29,7 @@
             </section>
             <section class="elements" aria-label="памятные места пользователя">
                 <ul class="cards">
-                         
+                   <!-- Контейнер для добавления карточек-->      
                 </ul>
             </section>
         </main>
@@ -37,10 +37,10 @@
             <div class="popup__container popup__container_profile">
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__form popup__form_profile" name="job-and-name-input" novalidate>
-                   <input type="text" id="name-card" name="name" placeholder="Имя" value="Жак-Ив Кусто" 
+                   <input type="text" id="name-card" name="username" placeholder="Имя" value="Жак-Ив Кусто" 
                    class="popup__input popup__input_type_name " minlength="2" maxlength="40" required>
                    <span class="name-card-error popup__input-error"></span>
-                   <input type="text" id="job-card" name="job" placeholder="О себе" value="Исследователь океана" 
+                   <input type="text" id="job-card" name="userjob" placeholder="О себе" value="Исследователь океана" 
                    class="popup__input popup__input_type_job" minlength="2" maxlength="200" required>
                    <span class="job-card-error popup__input-error"></span>
                    <button type="submit" class="popup__save">Сохранить</button>
@@ -53,10 +53,10 @@
             <div class="popup__container popup__container_place">
                 <h3 class="popup__title">Новое место</h3>
                 <form class="popup__form popup__form_place" name="add-card-form" novalidate>
-                   <input type="text" id="place-card" name="designation" placeholder="Название" 
+                   <input type="text" id="place-card" name="name" placeholder="Название" 
                    value="" class="popup__input popup__input_type_designation" minlength="2" maxlength="30" required>
                    <span class="place-card-error popup__input-error"></span>
-                   <input type="url" id="link-card" name="cardslink" placeholder="Ссылка на картинку" 
+                   <input type="url" id="link-card" name="link" placeholder="Ссылка на картинку" 
                    value="" class="popup__input popup__input_type_card-link" required>
                    <span class="link-card-error popup__input-error"></span>
                    <button type="submit" class="popup__save popup__save_place">Создать</button>
@@ -86,7 +86,7 @@
             </div>
         </li>   
     </template>
-    <script src="./scripts/cards.js"></script>
-    <script src="./scripts/index.js" type="module"></script>
+    <script src="./utils/cards.js"></script>
+    <script src="./pages/index.js" type="module"></script>
 </body>
 </html>
