@@ -5,18 +5,24 @@ class Card {
         this._handleCardClick = handleCardClick;
         this._cardSelector = cardSelector;       
     }
+
     //клонирование заготовки
     _getTemplate() {const cardElement = document.querySelector(this._cardSelector)
         .content.querySelector('.card').cloneNode(true);   
         return cardElement;
     }
-    _handleLikeClick = () => {   //лайк
+
+    //лайк
+    _handleLikeClick = () => {   
         this._likeButton.classList.toggle('card__like_active');
     }
-    _handleTrashClick = () => { //корзина
+
+    //корзина
+    _handleTrashClick = () => { 
         this._element.remove();
         this._element = null;
     }
+
     //общий слушатель активности
     _setEventListeners() {
         this._cardImage.addEventListener('click', 
@@ -24,7 +30,9 @@ class Card {
         this._likeButton.addEventListener('click', this._handleLikeClick);
         this._trashButton.addEventListener('click', this._handleTrashClick);
     }
-    generateCard() { //создание карточки
+
+    //создание карточки
+    generateCard() { 
         this._element = this._getTemplate();
         this._cardImage = this._element.querySelector('.card__image');
         this._likeButton = this._element.querySelector('.card__like');
