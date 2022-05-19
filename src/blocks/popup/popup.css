@@ -1,14 +1,14 @@
 .popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgb(0, 0, 0, .5);
-    opacity: 0;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    transition: opacity .5s linear, visibility .5s linear;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.5);
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  transition: opacity 0.5s linear, visibility 0.5s linear;
 }
