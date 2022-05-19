@@ -54,13 +54,14 @@ const sectionCards = new Section(
   ".cards"
 );
 sectionCards.renderItems();
-// 4. Добавление новой карточки из формы
 
+// 4. Добавление новой карточки из формы
 const popupNewPlace = new PopupWithForm({
   popupSelector: ".popup_new-place",
   callbackFormSubmit: (data) => {
     const newCardElement = renderCard(data);
     sectionCards.addItemPrepend(newCardElement);
+    popupNewPlace.close();
   },
 });
 popupNewPlace.setEventListeners();
@@ -85,6 +86,7 @@ const popupEditProfile = new PopupWithForm({
   popupSelector: ".popup_profile-edit",
   callbackFormSubmit: (data) => {
     userProfile.setUserInfo(data);
+    popupEditProfile.close();
   },
 });
 popupEditProfile.setEventListeners();
