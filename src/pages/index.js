@@ -7,6 +7,7 @@ import {
   formNewPlace,
   formElementProfile,
 } from "../utils/constants.js";
+import {initialCards} from "../utils/cards.js";
 import { obj } from "../utils/formobject.js";
 import { Section } from "../components/Section.js";
 import { Card } from "../components/Card.js";
@@ -53,6 +54,7 @@ const sectionCards = new Section(
   },
   ".cards"
 );
+console.log(item);
 sectionCards.renderItems();
 
 // 4. Добавление новой карточки из формы
