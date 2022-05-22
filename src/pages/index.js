@@ -49,12 +49,13 @@ const sectionCards = new Section(
     items: initialCards,
     renderer: (item) => {
       const cardElement = renderCard(item);
+      console.log(item);
       sectionCards.addItemAppend(cardElement);
     },
   },
   ".cards"
 );
-console.log(item);
+//console.log(item);
 sectionCards.renderItems();
 
 // 4. Добавление новой карточки из формы
