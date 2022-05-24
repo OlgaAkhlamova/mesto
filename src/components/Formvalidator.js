@@ -71,6 +71,7 @@ class FormValidator {
     this._inputList.forEach((item) => {
       this._hideInputError(item);
     });
+    this.toggleButtonState();
   }
 
   //слушатель событий всех полей формы
