@@ -34,8 +34,13 @@ class Card {
     this._likeCounter.textContent = size;
   };
 
+  isLiked() {
+    return this._likeButton.classList.contains("card__like_active");
+  }
+
   //удаление
   removeCard() {
+    console.log("Я работаю");
     this._element.remove();
     this._element = null;
   };

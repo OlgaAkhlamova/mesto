@@ -17,6 +17,7 @@ class UserInfo {
     this._userName.textContent = data.name;
     this._userJob.textContent = data.about;
     this._userAvatar.src = data.avatar;
+    this._userId = data._id;
   }
 }
 

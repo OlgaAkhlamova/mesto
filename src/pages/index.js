@@ -33,14 +33,15 @@ const api = new Api({
     'content-type': 'application/json'
   }
 });
-
-api.getInfoUser()
-.then((res) => {
-  console.log(res);
-})
-.catch((err) => {
-  console.log('Ошибка. Запрос не выполнен');
-})
+// в самом деле это была "проверка связи" в моменте отладки - выполнит сервер запрос или нет)))
+//просто я ее забыла удалить))) можно оставить в комментарии? если нет - удалю
+//api.getInfoUser()
+//.then((res) => {
+//  console.log(res);
+//})
+//.catch((err) => {
+//  console.log('Ошибка. Запрос не выполнен');
+//})
 
 //*// ЧАСТЬ 1: отрисовка массива карточек в DOM и создание карточки из формы
 
@@ -52,22 +53,23 @@ popupShowZoom.setEventListeners();
 // 2. Попап подтверждения действия не даст совершить опрометчивый поступок
 const popupDeleteCard = new PopupConfirmAction({
   handleConfirmAction: (card) => {
+    console.log(card);
     deleteCard(card); 
   }
 }, ".popup_delete-card");
 popupDeleteCard.setEventListeners();
 
 // 3. Если всё-таки надо удалить карточку
-function deleteCard(card) {   
+function deleteCard(card) { 
+  agreeDelete(true, popupDeleteCard.actionButton);
   api.deleteCardApi(card)    
-    .then((card) => {
+    .then(() => {
       console.log(card._cardId);
-      card.removeCard()       
+      card.removeCard()
+      popupDeleteCard.close();       
     })
     .catch((err) => console.log(err))
-    .finally(() => {
-      popupDeleteCard.close();
-    });
+    .finally(() => agreeDelete(false, popupDeleteCard.actionButton, "Да"));
 }
 
 //4. Если захотелось лайкнуть
@@ -88,14 +90,21 @@ function deleteLike(card) {
     .catch((err) => console.log(err))
 }
 
-//6. Отображение сохранения изменений
-function saveChanges(isLoading, element, content) {
-  console.log(element);
+//6. Отображение сохранения или удаления 
+function renderLoading(isLoading, element, content) {
  if (isLoading) {
    element.textContent = "Coхранение...";
  } else {
    element.textContent = content;
  }
+}
+
+function agreeDelete(isLoading, element, content) {
+  if (isLoading) {
+    element.textContent = "Удаление...";
+  } else {
+    element.textContent = content;
+  }
 }
 
 // 7. Создание экземпляра карточки
@@ -109,8 +118,8 @@ function renderCard(item) {
       handleTrashClick: () => {
         popupDeleteCard.open(card);
       },
-      handleLikeClick: (evt) => {
-        if (!evt.target.classList.contains("card__like_active")) {
+      handleLikeClick: () => {
+        if (!card.isLiked()) { 
           addLike(card)
         } else {
           deleteLike(card)
@@ -135,7 +144,8 @@ const sectionCards = new Section(
 );
 
 let userId = "";
-
+// в этом месте запуталась =( но обещаю в спокойной обстановке 
+// вернуться и переделать
 api.getPromiseAll()
   .then((values) => {
     const cards = values[0];
@@ -144,7 +154,6 @@ api.getPromiseAll()
     console.log(cards);
     userProfile.setUserInfo(info);
     userId = info._id;
-
     sectionCards.renderItems(cards);
   })
   .catch((err) => console.log(err));
@@ -153,7 +162,7 @@ api.getPromiseAll()
 const popupNewPlace = new PopupWithForm({
   popupSelector: ".popup_new-place",
   callbackFormSubmit: (data) => {
-    saveChanges(true, popupNewPlace.submitBtn);
+    renderLoading(true, popupNewPlace.submitBtn);
     api.postCard(data)
       .then((data) => {
         const newCard = renderCard(data);
@@ -162,14 +171,13 @@ const popupNewPlace = new PopupWithForm({
         popupNewPlace.close();
       })
       .catch((err) => console.log(err))
-      .finally(() => saveChanges(false, popupNewPlace.submitBtn, "Сохранить"));
+      .finally(() => renderLoading(false, popupNewPlace.submitBtn, "Создать"));
   },
 });
 popupNewPlace.setEventListeners();
 
 // 10. Слушатели событий
 popupNewPlaceOpen.addEventListener("click", () => {
- formNewPlace.reset();
   newPlaceValid.clearError();
   popupNewPlace.open();
 });
@@ -187,7 +195,7 @@ const userProfile = new UserInfo({
 const popupEditProfile = new PopupWithForm({
   popupSelector: ".popup_profile-edit",
   callbackFormSubmit: (data) => {
-    saveChanges(true, popupEditProfile.submitBtn);
+    renderLoading(true, popupEditProfile.submitBtn);
     api.changeProfileInfo(data)
       .then((res) => {
         userProfile.setUserInfo(res);
@@ -195,7 +203,7 @@ const popupEditProfile = new PopupWithForm({
       })
       .catch(err => console.log(err))
       .finally(() => {
-          saveChanges(false, popupEditProfile.submitBtn, "Сохранить")
+        renderLoading(false, popupEditProfile.submitBtn, "Сохранить")
       });
   },
 });
@@ -205,7 +213,7 @@ popupEditProfile.setEventListeners();
 const popupChangeAvatar = new PopupWithForm({
   popupSelector: ".popup_new-avatar",
   callbackFormSubmit: (data) => {
-    saveChanges(true, popupChangeAvatar.submitBtn);
+    renderLoading(true, popupChangeAvatar.submitBtn);
     api.changeAvatar(data)
       .then((res) => {
         userProfile.setUserInfo(res);
@@ -213,22 +221,24 @@ const popupChangeAvatar = new PopupWithForm({
       })
       .catch(err => console.log(err))
       .finally(() => {
-        saveChanges(false, popupChangeAvatar.submitBtn, "Сохранить")
+        renderLoading(false, popupChangeAvatar.submitBtn, "Сохранить")
       });
     }
 });
-popupChangeAvatarOpen.addEventListener('click', () => {
-  popupChangeAvatar.open();
-});
 popupChangeAvatar.setEventListeners();
 
- //4. Слушатель события открытия формы редактирования
+ //4. Слушатели события открытия форм редактирования профиля
 popupEditProfileOpen.addEventListener("click", () => {
   const dataUserProfile = userProfile.getUserInfo();
   inputName.value = dataUserProfile.name;
   inputJob.value = dataUserProfile.about;
   profileValid.clearError();
   popupEditProfile.open();
+});
+
+popupChangeAvatarOpen.addEventListener('click', () => {
+  formAvatarValid.clearError();
+  popupChangeAvatar.open();
 });
 
 //*// ЧАСТЬ 3: валидация всех встречающихся в проекте форм: 
@@ -241,3 +251,7 @@ newPlaceValid.enableValidation();
 // - смены аватара
 const formAvatarValid = new FormValidator(obj, formChangeAvatar);
 formAvatarValid.enableValidation();
+
+// Огромное спасибо за подробное ревью с объяснением ошибок! Про валидацию я обязательно 
+//поэкспериментирую, просто сейчас время поджимает: время, отпущенное куратором на доработку
+//на исходе =(  
