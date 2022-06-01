@@ -19,14 +19,18 @@
       <main class="container" aria-label="личная страница пользователя">
         <section class="profile">
           <div class="profile__items">
-            <img
-              src="<%=require('./images/profile-foto.jpg')%>"
-              alt="фотография пользователя"
-              class="profile__avatar"
-            />
+            <div class="profile__avatar-container">
+              <img
+                src="<%=require('./images/avatarka.jpg')%>"
+                alt="фотография пользователя"
+                class="profile__avatar"
+                name="avatar"
+              />
+              <div class="profile__overlay"></div>
+            </div>
             <div class="profile__info">
               <div class="profile__info-item">
-                <h1 class="profile__info-name">Жак-Ив Кусто</h1>
+                <h1 class="profile__info-name" name="name">Пользователь</h1>
                 <button
                   type="button"
                   class="profile__info-edit"
@@ -34,7 +38,7 @@
                   title="редактировать профиль"
                 ></button>
               </div>
-              <p class="profile__info-job">Исследователь океана</p>
+              <p class="profile__info-job" name="about">O себе</p>
             </div>
           </div>
           <button
@@ -50,105 +54,73 @@
           </ul>
         </section>
       </main>
-      <section
-        class="popup popup_profile-edit"
-        aria-label="редактирование профиля"
-      >
+      <!-- Попап редактирования профиля -->
+      <section class="popup popup_profile-edit" aria-label="редактирование профиля">
         <div class="popup__container popup__container_profile">
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <form
-            class="popup__form popup__form_profile"
-            name="job-and-name-input"
-            novalidate
-          >
-            <input
-              type="text"
-              id="name-card"
-              name="username"
-              placeholder="Имя"
-              value="Жак-Ив Кусто"
-              class="popup__input popup__input_type_name"
-              minlength="2"
-              maxlength="40"
-              required
-            />
-            <span class="name-card-error popup__input-error"></span>
-            <input
-              type="text"
-              id="job-card"
-              name="userjob"
-              placeholder="О себе"
-              value="Исследователь океана"
-              class="popup__input popup__input_type_job"
-              minlength="2"
-              maxlength="200"
-              required
-            />
-            <span class="job-card-error popup__input-error"></span>
-            <button type="submit" class="popup__save">Сохранить</button>
-          </form>
-          <button
-            type="button"
-            class="popup__close popup__close_profile-edit"
-            aria-label="закрыть форму редактирования"
-            title="закрыть форму редактирования"
-          ></button>
+            <h3 class="popup__title">Редактировать профиль</h3>
+            <form class="popup__form popup__form_profile" name="job-and-name-input" novalidate>
+               <input type="text" id="name-card" name="username" placeholder="Имя" value="Жак-Ив Кусто" 
+               class="popup__input popup__input_type_name " minlength="2" maxlength="40" required>
+               <span class="name-card-error popup__input-error"></span>
+               <input type="text" id="job-card" name="userjob" placeholder="О себе" value="Исследователь океана" 
+               class="popup__input popup__input_type_job" minlength="2" maxlength="200" required>
+               <span class="job-card-error popup__input-error"></span>
+               <button type="submit" class="popup__save">Сохранить</button>
+            </form>
+            <button type="button" class="popup__close popup__close_profile-edit" aria-label="закрыть форму редактирования" 
+            title="закрыть форму редактирования"></button>   
         </div>
       </section>
+      <!-- Попап добавления новой карточки  -->
       <section class="popup popup_new-place" aria-label="добавление фотографии">
         <div class="popup__container popup__container_place">
-          <h3 class="popup__title">Новое место</h3>
-          <form
-            class="popup__form popup__form_place"
-            name="add-card-form"
-            novalidate
-          >
-            <input
-              type="text"
-              id="place-card"
-              name="name"
-              placeholder="Название"
-              value=""
-              class="popup__input popup__input_type_designation"
-              minlength="2"
-              maxlength="30"
-              required
-            />
-            <span class="place-card-error popup__input-error"></span>
-            <input
-              type="url"
-              id="link-card"
-              name="link"
-              placeholder="Ссылка на картинку"
-              value=""
-              class="popup__input popup__input_type_card-link"
-              required
-            />
-            <span class="link-card-error popup__input-error"></span>
-            <button type="submit" class="popup__save popup__save_place">
-              Создать
-            </button>
-          </form>
-          <button
-            type="button"
-            class="popup__close popup__close_new-place"
-            aria-label="закрыть форму добавления изображения"
-            title="закрыть форму добавления изображения"
-          ></button>
+            <h3 class="popup__title">Новое место</h3>
+            <form class="popup__form popup__form_place" name="add-card-form" novalidate>
+               <input type="text" id="place-card" name="name" placeholder="Название" 
+               value="" class="popup__input popup__input_type_designation" minlength="2" maxlength="30" required>
+               <span class="place-card-error popup__input-error"></span>
+               <input type="url" id="link-card" name="link" placeholder="Ссылка на картинку" 
+               value="" class="popup__input popup__input_type_card-link" required>
+               <span class="link-card-error popup__input-error"></span>
+               <button type="submit" class="popup__save popup__save_place">Создать</button>
+            </form>
+            <button type="button" class="popup__close popup__close_new-place" aria-label="закрыть форму добавления изображения" 
+            title="закрыть форму добавления изображения"></button>   
         </div>
-      </section>
+      </section> 
+      <!-- Попап просмотра увеличенной фотографии -->
       <section class="popup popup_show-zoom" aria-label="просмотр фотографии">
-        <div class="popup__container-zoom">
-          <img src="#" alt="" class="popup__card" />
-          <p class="popup__subtitle-zoom"></p>
-          <button
-            type="button"
-            class="popup__close popup__close_show-zoom"
-            aria-label="закрыть изображение"
-            title="закрыть изображение"
-          ></button>
+        <div class="popup__container-zoom"> 
+            <img src="#" alt="" class="popup__card">
+            <p class="popup__subtitle-zoom"></p>
+            <button type="button" class="popup__close popup__close_show-zoom" aria-label="закрыть изображение" title="закрыть изображение"></button>   
         </div>
       </section>
+      <!-- Попап подтверждения удаления карточки -->
+      <section class="popup popup_delete-card" aria-label="подтверждение удаления карточки">
+        <div class="popup__container popup__container_delete-card">
+            <h3 class="popup__title">Вы уверены?</h3>
+            <form class="popup__form popup__form_delete-card" name="delete-card-form" novalidate>
+               <button type="submit" class="popup__save popup__save_delete-card">Да</button>
+            </form>
+            <button type="button" class="popup__close popup__close_delete-card" aria-label="закрыть форму удаления карточки" 
+            title="закрыть форму добавления изображения"></button>   
+        </div>
+      </section> 
+      <!-- Попап обновления аватарки -->
+      <section class="popup popup_new-avatar" aria-label="обновление аватарки">
+        <div class="popup__container popup__container_new-avatar">
+            <h3 class="popup__title">Обновить аватар</h3>
+            <form class="popup__form popup__form_new-avatar" name="new-avatar-form" novalidate>
+               <input type="url" id="new-avatar" name="avatar" placeholder="Ссылка на новый аватар" 
+               value="" class="popup__input popup__input_type_new-avatar" required>
+               <span class="new-avatar-error popup__input-error"></span>
+               <button type="submit" class="popup__save popup__save_new-avatar">Сохранить</button>
+            </form>
+            <button type="button" class="popup__close popup__close_new-avatar" aria-label="закрыть форму обновления аватара" 
+            title="закрыть форму обновления аватара"></button>   
+        </div>
+      </section>  
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
@@ -159,7 +131,10 @@
         <div class="card__trash"></div>
         <div class="card__pitch">
           <h2 class="card__title"></h2>
-          <button type="button" class="card__like"></button>
+          <div class="card__popular">
+            <button type="button" class="card__like"></button>
+            <span class="card__like-counter">0</span>
+          </div>
         </div>
       </li>
     </template>
